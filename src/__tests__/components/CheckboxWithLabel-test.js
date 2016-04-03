@@ -1,10 +1,5 @@
-jest.unmock('../../components/CheckboxWithLabel')
-
 import React from 'react'
-import { shallow } from 'enzyme'
-import sinon from 'sinon'
-// import ReactDOM from 'react-dom'
-// import TestUtils from 'react-addons-test-utils'
+import { shallow, mount } from 'enzyme'
 import CheckboxWithLabel from '../../components/CheckboxWithLabel'
 
 describe('CheckboxWithLabel', () => {
@@ -13,21 +8,10 @@ describe('CheckboxWithLabel', () => {
 
     expect(checkbox.text()).toEqual('Off')
 
+    checkbox.find('input').simulate('change')
 
-
-
-    // const checkbox = TestUtils.renderIntoDocument(
-    //   <CheckboxWithLabel labelOn="On" labelOff="Off" />
-    // )
-    //
-    // const checkboxNode = ReactDOM.findDOMNode(checkbox)
-    //
-    // expect(checkboxNode.textContent).toEqual('Off')
-    //
-    // TestUtils.Simulate.change(
-    //   TestUtils.findRenderedDOMComponentWithTag(checkbox, 'input')
-    // )
-    //
-    // expect(checkboxNode.textContent).toEqual('On')
+    expect(checkbox.text()).toEqual('On')
   })
 })
+
+
